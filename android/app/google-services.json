@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "384835216940",
+    "project_id": "novel-architect-a5b19",
+    "storage_bucket": "novel-architect-a5b19.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384835216940:android:3f5723626fff8021b1d389",
+        "android_client_info": {
+          "package_name": "com.example.novelarchitect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeWv73xrCDksVVW2ONdfG3w2PsV_EeHxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
