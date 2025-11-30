@@ -9,6 +9,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //AL POSTO DI "RITA" CI SARA' IL NOME DELL'UTENTE QUANDO IMPLEMENTERO' FIREBASE
+    final linguaProvider = Provider.of<LinguaProvider>(context);
+
     final now = DateTime.now();
     String greeting;
     if (now.hour >= 6 && now.hour < 12) {
