@@ -66,7 +66,7 @@ class _DettaglioCapitoloState extends State<DettaglioCapitolo> {
     widget.onSalvaModifiche(capitoloModificato);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Modifiche salvate!')),
+      const SnackBar(content: Text(linguaProvider.traduci('Modifiche salvate!'))),
     );
   }
 
