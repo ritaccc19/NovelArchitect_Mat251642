@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../providers/lingua_providers.dart';
 import '../widgets/bottoni_personalizzati.dart';
 import '../widgets/input_personalizzato.dart';
 import 'dettaglio_capitolo.dart';
@@ -24,31 +26,28 @@ class _SezioneCapitoliState extends State<SezioneCapitoli> {
   ];
 
   void _aggiungiCapitolo() {
+    final linguaProvider = Provider.of<LinguaProvider>(context, listen: false);
     final TextEditingController titoloController = TextEditingController();
 
-    //il dialog è un popup per aggiungere un capitolo
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Nuovo Capitolo'),
+        title: Text(linguaProvider.traduci('nuovo_capitolo')), //  TRADOTTO
         content: InputPersonalizzato(
-          label: 'Titolo capitolo',
+          label: linguaProvider.traduci('titolo_capitolo'), //  TRADOTTO
           controller: titoloController,
         ),
         actions: [
           TextButton(
-            //bottone per annullare l'azione
             onPressed: () => Navigator.pop(context),
-            child: const Text('Annulla'),
+            child: Text(linguaProvider.traduci('annulla')), // TRADOTTO
           ),
           BottoneSalva(
-            //bottone per creare un nuovo capitolo
             onPressed: () {
               if (titoloController.text.isNotEmpty) {
                 final nuovoCapitolo = Capitolo(
                   id: DateTime.now().millisecondsSinceEpoch.toString(),
                   titolo: titoloController.text,
-                  //tutti gli altri campi devono essere nulli all'inizializzazione
                   descrizione: "",
                   personaggiCoinvolti: [""],
                   luogo: "",
@@ -57,14 +56,13 @@ class _SezioneCapitoliState extends State<SezioneCapitoli> {
                 );
 
                 setState(() {
-                  //metodo da richiamare quando un widget stateful viene modificato. Aggiorna la lista _capitoli aggiungendone uno nuovo
                   _capitoli.add(nuovoCapitolo);
                 });
 
                 Navigator.pop(context);
               }
             },
-            testo: "Crea Capitolo",
+            testo: linguaProvider.traduci('crea_capitolo'), //  TRADOTTO
           ),
         ],
       ),
@@ -72,22 +70,22 @@ class _SezioneCapitoliState extends State<SezioneCapitoli> {
   }
 
   void _aggiornaCapitolo(Capitolo capitoloModificato) {
-    //metodo che si usa quando si MODIFICA UN CAPITOLO, per esempio se si modifica il titolo, la descrizione ecc.
     setState(() {
-      final index = _capitoli.indexWhere((c) => c.id == capitoloModificato.id); //cerca nella lista capitoli quello con lo stesso id del capitolo modificato
+      final index = _capitoli.indexWhere((c) => c.id == capitoloModificato.id);
       if (index != -1) {
-        _capitoli[index] = capitoloModificato; //aggiorno il capitolo modificato
+        _capitoli[index] = capitoloModificato;
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    //la build del widget sezione_capitoli
+    final linguaProvider = Provider.of<LinguaProvider>(context); //  PROVIDER
+
     return Scaffold(
       body: _capitoli.isEmpty
-          ? const Center(child: Text('Nessun capitolo ancora creato')) //se non ci sono capitoli, viene mostrato questo (ma di default ho impostato che ce n'è uno
-          : ListView.builder( //se ci sono capitoli, li conto e creo una card per ogni capitolo
+          ? Center(child: Text(linguaProvider.traduci('nessun_capitolo'))) //  TRADOTTO
+          : ListView.builder(
         itemCount: _capitoli.length,
         itemBuilder: (context, index) {
           final capitolo = _capitoli[index];
@@ -95,32 +93,28 @@ class _SezioneCapitoliState extends State<SezioneCapitoli> {
           return Card(
             margin: const EdgeInsets.all(8.0),
             child: ListTile(
-              title: Text(capitolo.titolo), //titolo
-              subtitle: Text(capitolo.descrizione), //sottotitolo
+              title: Text(capitolo.titolo),
+              subtitle: Text(capitolo.descrizione),
               trailing: const Icon(Icons.arrow_forward),
-              onTap: () { //se clicco sulla Card, mi esce
-                Navigator.push( //uso il navigator per direzionare l'app verso una nuova schermata
+              onTap: () {
+                Navigator.push(
                   context,
-                  MaterialPageRoute( //la prossima scheramta sarà DettaglioCapitolo, ossia la schermata dedicata ad un singolo capitolo
+                  MaterialPageRoute(
                     builder: (context) => DettaglioCapitolo(
-                      capitolo: capitolo, //scelgo il capitolo su cui ho cliccato
-                      onSalvaModifiche: _aggiornaCapitolo, //funzione per salvare modifiche fatte al capitolo. Si tratta di una CALLBACK FUNCTION
-                      //onSalvaModifiche è un campo required della schermata DettaglioCapitolo. Permette di riutilizzare il codice di aggiornaCapitolo
-                      //in un altro file, cioé dettaglio_capitolo. capitoloModificato infatti gli viene dato da dettaglio_capitolo.
+                      capitolo: capitolo,
+                      onSalvaModifiche: _aggiornaCapitolo,
                     ),
                   ),
                 );
               },
             ),
           );
-
         },
       ),
       floatingActionButton: FloatingActionButton(
-        //non aggiungo il titolo perché è gia incluso nel metodo _aggiungiCapitolo, però è un bottone che dev'essere sempre presente quindi
-        //va messo nella build()
         onPressed: _aggiungiCapitolo,
         child: const Icon(Icons.add),
+        tooltip: linguaProvider.traduci('aggiungi'), // TRADOTTO
       ),
     );
   }

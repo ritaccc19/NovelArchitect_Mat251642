@@ -1,6 +1,8 @@
 // lib/UI/pages/home_screen.dart
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../layout.dart';//i due puntini sono per dire di uscire da pages  andare a cercare layout.dart in UI
+import'../../providers/lingua_providers.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,11 +16,12 @@ class HomeScreen extends StatelessWidget {
     final now = DateTime.now();
     String greeting;
     if (now.hour >= 6 && now.hour < 12) {
-      greeting = "Buongiorno, Rita!";
+      greeting = '${linguaProvider.traduci('Buongiorno')} Rita'; //dart mi ha comsigliato di usare l'interpolation. Scrivo la funzione e ne prendo il valore con il dollaro
+    //non si puo scrivere 'stringa'+'stringa'
     } else if (now.hour >= 12 && now.hour < 18) {
-      greeting = "Buon pomeriggio, Rita!";
+      greeting = '${linguaProvider.traduci('Buon Pomeriggio')} Rita';
     } else {
-      greeting = "Buonasera, Rita!";
+      greeting = '${linguaProvider.traduci('Buonasera')} Rita';
     }
 
     return Scaffold(
@@ -38,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Layout()),
                 );
               },
-              child: const Text('Inizia a scrivere!'),
+              child: Text(linguaProvider.traduci('Inizia a scrivere!')),
             )
         ]
     )

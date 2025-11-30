@@ -3,8 +3,11 @@ import 'package:novelarchitect/UI/pages/sezione_capitoli.dart';
 import '../widgets/bottoni_personalizzati.dart';
 import '../widgets/input_personalizzato.dart';
 import '../widgets/sezione_titolo.dart';
+import '../../providers/lingua_providers.dart';
+import 'package:provider/provider.dart';
 
 class DettaglioCapitolo extends StatefulWidget {
+
   final Capitolo capitolo;
   final Function(Capitolo) onSalvaModifiche;
 
@@ -19,6 +22,7 @@ class DettaglioCapitolo extends StatefulWidget {
 }
 
 class _DettaglioCapitoloState extends State<DettaglioCapitolo> {
+
   //uso un controller per ogni input di testo
   late TextEditingController _titoloController;
   late TextEditingController _descrizioneController;
@@ -66,7 +70,7 @@ class _DettaglioCapitoloState extends State<DettaglioCapitolo> {
     widget.onSalvaModifiche(capitoloModificato);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text(linguaProvider.traduci('Modifiche salvate!'))),
+      SnackBar(content: Text(('Ok'))),
     );
   }
 
@@ -76,12 +80,12 @@ class _DettaglioCapitoloState extends State<DettaglioCapitolo> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dettaglio Capitolo'),
+        title: Text(linguaProvider.traduci('Dettaglio Capitolo')),
         actions: [
           BottoneSalva(
             //se clicco il bottone salva, allora viene richiamata la funzione salvaModifiche
             onPressed: _salvaModifiche, //callback function
-            testo: "Salva",
+            testo: linguaProvider.traduci("Salva"),
           ),
         ],
       ),
@@ -90,34 +94,34 @@ class _DettaglioCapitoloState extends State<DettaglioCapitolo> {
         child: ListView(
           children: [
             InputPersonalizzato(
-              label: 'Titolo Capitolo',
+              label: linguaProvider.traduci('Titolo Capitolo'),
               controller: _titoloController,
             ),
 
             InputPersonalizzato(
-              label: 'Descrizione',
+              label: linguaProvider.traduci('Descrizione'),
               controller: _descrizioneController,
               maxLines: 5,
             ),
 
             InputPersonalizzato(
-              label: 'Personaggi Coinvolti (separati da virgola)',
+              label: linguaProvider.traduci('Personaggi Coinvolti (separati da virgola)'),
               controller: _personaggiCoinvoltiController,
             ),
 
             InputPersonalizzato(
-              label: 'Luogo del capitolo',
-              controller: _luogoController, // ✅ Nome corretto
+              label: linguaProvider.traduci('Luogo del capitolo'),
+              controller: _luogoController, //
             ),
 
             InputPersonalizzato(
-              label: 'Note Creative',
+              label: linguaProvider.traduci('Note Creative'),
               controller: _noteController,
               maxLines: 3,
             ),
 
             InputPersonalizzato(
-              label: 'Obiettivi del Capitolo',
+              label: linguaProvider.traduci('Obiettivi del Capitolo'),
               controller: _obiettiviController,
               maxLines: 3,
             ),

@@ -1,11 +1,14 @@
 //qui scriverò il layout che dovrà essere presente in tutte le schermate
 //mi trovo in lib/UI/widgets/layout.dart
 import 'package:flutter/material.dart';
+import 'package:novelarchitect/UI/pages/impostazioni.dart';
+import 'package:provider/provider.dart';
 import 'pages/home_screen.dart';
 import 'pages/sezione_capitoli.dart';
 import 'pages/luoghi.dart';
 import 'pages/trama_sinossi.dart';
 import 'pages/personaggi.dart';
+import'../providers/lingua_providers.dart';
 
 
 class Layout extends StatefulWidget {
@@ -28,38 +31,52 @@ class _LayoutState extends State<Layout> {
 
   @override
   Widget build(BuildContext context) {
+    final linguaProvider = Provider.of<LinguaProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NovelArchitect: la tua app da scrittore!'),
+        title: Text(linguaProvider.traduci('NovelArchitect: la tua app da scrittore!')),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Impostazioni')),
+                 SnackBar(content: Text(linguaProvider.traduci('Impostazioni'))),
               );
             },
           ),
         ],
       ),
       drawer: Drawer( //barra laterale in cui aggiungo i suggerimenti, il diario
-        child: ListView(
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
-              child: Text(
-                'Benvenuta, Rita!',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+        // Nel tuo layout.dart, aggiorna il Drawer:
+          child: ListView(
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(color: Colors.blue),
+                child: Text(
+                  'NovelArchitect',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
               ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.lightbulb),
-              title: const Text('Suggerimenti d’ispirazione'),
-              onTap: () => Navigator.pop(context),
-            ),
-          ],
+              ListTile(
+                leading: const Icon(Icons.lightbulb),
+                title: const Text('Suggerimenti d\'ispirazione'),
+                onTap: () => Navigator.pop(context),
+              ),
+              // ✅ AGGIUNGI QUESTO:
+              ListTile(
+                leading: const Icon(Icons.settings),
+                title: Text(linguaProvider.traduci('Impostazioni')),
+                onTap: () {
+                  Navigator.pop(context); // Chiudi drawer
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Impostazioni()),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
-      ),
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,//scrivendo fixed faccio in modo che le etichette siano visibili sempre
@@ -70,12 +87,12 @@ class _LayoutState extends State<Layout> {
           });
         },
         //aggiungo quattro bottoni in una barra di navigazione, uno per ogni schermata (che ho salvato dentro la lista di widget const)
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Personaggi'),
-          BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Trama e Sinossi'),
-          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Capitoli'),
-          BottomNavigationBarItem(icon: Icon(Icons.location_on), label: 'Luoghi'),
+        items:  [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: linguaProvider.traduci('Home')),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: linguaProvider.traduci('Personaggi')),
+          BottomNavigationBarItem(icon: Icon(Icons.map), label:linguaProvider.traduci( 'Trama e Sinossi')),
+          BottomNavigationBarItem(icon: Icon(Icons.book), label: linguaProvider.traduci('Capitoli')),
+          BottomNavigationBarItem(icon: Icon(Icons.location_on), label: linguaProvider.traduci('Luoghi')),
         ],
       ),
     );

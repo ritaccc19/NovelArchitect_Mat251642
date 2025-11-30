@@ -2,12 +2,20 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:novelarchitect/UI/pages/home_screen.dart';
+import 'package:novelarchitect/providers/lingua_providers.dart';
+import 'package:provider/provider.dart';
 import 'UI/widgets/tema_mio.dart';
 import 'UI/layout.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => LinguaProvider()..caricaLinguaSalvata(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 
