@@ -72,6 +72,8 @@ class _DettaglioCapitoloState extends State<DettaglioCapitolo> {
 
   @override
   Widget build(BuildContext context) {
+    final linguaProvider = Provider.of<LinguaProvider>(context); //per cambiare la lingua
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dettaglio Capitolo'),
