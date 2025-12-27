@@ -2,6 +2,7 @@
 //mi trovo in lib/UI/widgets/layout.dart
 import 'package:flutter/material.dart';
 import 'package:novelarchitect/UI/pages/impostazioni.dart';
+import 'package:novelarchitect/UI/pages/suggerimenti_ispirazione.dart';
 import 'package:provider/provider.dart';
 import 'pages/home_screen.dart';
 import 'pages/sezione_capitoli.dart';
@@ -34,17 +35,7 @@ class _LayoutState extends State<Layout> {
     final linguaProvider = Provider.of<LinguaProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(linguaProvider.traduci('NovelArchitect: la tua app da scrittore!')),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                 SnackBar(content: Text(linguaProvider.traduci('Impostazioni'))),
-              );
-            },
-          ),
-        ],
+        title: Text(linguaProvider.traduci('NovelArchitect:  la tua app da scrittore')),
       ),
       drawer: Drawer( //barra laterale in cui aggiungo i suggerimenti, il diario
         // Nel tuo layout.dart, aggiorna il Drawer:
@@ -60,10 +51,17 @@ class _LayoutState extends State<Layout> {
               ListTile(
                 leading: const Icon(Icons.lightbulb),
                 title: const Text('Suggerimenti d\'ispirazione'),
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const InspirationScreen()),
+                  );
+                },
               ),
-              // ✅ AGGIUNGI QUESTO:
-              ListTile(
+
+
+                ListTile(
                 leading: const Icon(Icons.settings),
                 title: Text(linguaProvider.traduci('Impostazioni')),
                 onTap: () {
