@@ -42,7 +42,7 @@ class _LayoutState extends State<Layout> {
           child: ListView(
             children: [
               const DrawerHeader(
-                decoration: BoxDecoration(color: Colors.blue),
+                decoration: BoxDecoration(color: Colors.pink),
                 child: Text(
                   'NovelArchitect',
                   style: TextStyle(color: Colors.white, fontSize: 20),
