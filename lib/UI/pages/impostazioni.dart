@@ -16,7 +16,7 @@ class Impostazioni extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
-        title: Text(linguaProvider.traduci('impostazioni')),
+        title: Text(linguaProvider.traduci('Impostazioni')),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
@@ -39,8 +39,6 @@ class Impostazioni extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-          // ALTRE IMPOSTAZIONI (puoi aggiungere dopo)
-          // In impostazioni.dart, aggiungi questa sezione:
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),

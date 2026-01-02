@@ -70,7 +70,10 @@ class LinguaProvider with ChangeNotifier {
         'Scrivi qui la sinossi...':'Scrivi qui la sinossi...',
         'Scrivi qui la trama completa del tuo romanzo...':'Scrivi qui la trama completa del tuo romanzo...',
         'Scrivi qui la sinossi (max 500 parole)...':'Scrivi qui la sinossi (max 500 parole)...',
-        'NovelArchitect: la tua app da scrittore!':'NovelArchitect:la tua app da scrittore!',
+        'NovelArchitect:  la tua app da scrittore!':'NovelArchitect: la tua app da scrittore!',
+        //per copertina
+        'La copertina personalizzata è disponibile solo su mobile' : 'La copertina personalizzata è disponibile solo su mobile',
+        'Scegli copertina':'Scegli copertina'
       },
       'en': {
         'app_title': 'NovelArchitect',
@@ -111,7 +114,9 @@ class LinguaProvider with ChangeNotifier {
         'Scrivi qui la sinossi...':'Write here your synopsis...',
         'Scrivi qui la trama completa del tuo romanzo...':'Write your full plot here...',
         'Scrivi qui la sinossi (max 500 parole)...':'Write your synopsis here(max 500 words)...',
-        'NovelArchitect: la tua app da scrittore!':'NovelArchitect: Your application to write!',
+        'NovelArchitect:  la tua app da scrittore':'NovelArchitect: Your application to write!',
+        'Scegli copertina':'Choose cover',
+        'La copertina personalizzata è disponibile solo su mobile' : 'The custom cover is only available on mobile.'
 
       },
       'es': {
@@ -152,7 +157,9 @@ class LinguaProvider with ChangeNotifier {
         'Scrivi qui la sinossi...':'Escribe tu sinopsas aqui...',
         'Scrivi qui la trama completa del tuo romanzo...':'Escribe tu trama completa aqui...',
         'Scrivi qui la sinossi (max 500 parole)...':'Escribe tu sinopsas aqui (maximo 500 parabras)...',
-        'NovelArchitect: la tua app da scrittore!':'NovelArchitect: tu aplicacion de escritura!',
+        'NovelArchitect:  la tua app da scrittore!':'NovelArchitect: tu aplicacion de escritura!',
+        'La copertina personalizzata è disponibile solo su mobile': 'La funda personalizada solo está disponible en móviles.',
+        'Scegli copertina':'Elige portada'
 
       },
       'fr': {
@@ -194,7 +201,9 @@ class LinguaProvider with ChangeNotifier {
         'Scrivi qui la trama completa del tuo romanzo...':'Ecrivez votre intrigue complete ici...',
         'Scrivi qui la sinossi (max 500 parole)...':'Ecrivez votre synopsis ici( 500 mots maximum)...',
         //layout
-        'NovelArchitect: la tua app da scrittore!':'NovelArchitect: votre application d/ecriture!',
+        'NovelArchitect:  la tua app da scrittore!':'NovelArchitect: votre application d/ecriture!',
+        'La copertina personalizzata è disponibile solo su mobile': 'La coque personnalisée est uniquement disponible sur mobile.',
+        'Scegli copertina':'Choisissez la couverture'
       },
     };
 

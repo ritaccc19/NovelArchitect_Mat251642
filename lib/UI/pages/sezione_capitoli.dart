@@ -32,15 +32,15 @@ class _SezioneCapitoliState extends State<SezioneCapitoli> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(linguaProvider.traduci('nuovo_capitolo')), //  TRADOTTO
+        title: Text(linguaProvider.traduci('nuovo_capitolo')),
         content: InputPersonalizzato(
-          label: linguaProvider.traduci('titolo_capitolo'), //  TRADOTTO
+          label: linguaProvider.traduci('titolo_capitolo'),
           controller: titoloController,
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text(linguaProvider.traduci('annulla')), // TRADOTTO
+            child: Text(linguaProvider.traduci('annulla')),
           ),
           BottoneSalva(
             onPressed: () {
@@ -62,7 +62,7 @@ class _SezioneCapitoliState extends State<SezioneCapitoli> {
                 Navigator.pop(context);
               }
             },
-            testo: linguaProvider.traduci('crea_capitolo'), //  TRADOTTO
+            testo: linguaProvider.traduci('crea_capitolo'),
           ),
         ],
       ),
@@ -84,7 +84,7 @@ class _SezioneCapitoliState extends State<SezioneCapitoli> {
 
     return Scaffold(
       body: _capitoli.isEmpty
-          ? Center(child: Text(linguaProvider.traduci('nessun_capitolo'))) //  TRADOTTO
+          ? Center(child: Text(linguaProvider.traduci('nessun_capitolo')))
           : ListView.builder(
         itemCount: _capitoli.length,
         itemBuilder: (context, index) {
@@ -114,7 +114,7 @@ class _SezioneCapitoliState extends State<SezioneCapitoli> {
       floatingActionButton: FloatingActionButton(
         onPressed: _aggiungiCapitolo,
         child: const Icon(Icons.add),
-        tooltip: linguaProvider.traduci('aggiungi'), // TRADOTTO
+        tooltip: linguaProvider.traduci('aggiungi'),
       ),
     );
   }

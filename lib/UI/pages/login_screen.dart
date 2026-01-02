@@ -38,14 +38,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
     try {
       if (_isLogin) {
-        // 🔐 LOGIN
+        //  LOGIN
         await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text,
         );
-        _messaggio = '✅ Accesso riuscito!';
+        _messaggio = ' Accesso riuscito!';
       } else {
-        // 📝 REGISTRAZIONE
+        //  REGISTRAZIONE
         final userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
@@ -59,13 +59,12 @@ class _LoginScreenState extends State<LoginScreen> {
           );
         }
 
-        _messaggio = '✅ Account creato! Benvenuto!';
+        _messaggio = ' Account creato! Benvenuto!';
       }
 
-      // ✅ Successo - AppRouter mostrerà automaticamente Layout
 
     } on FirebaseAuthException catch (e) {
-      // ❌ Gestione errori
+      //  Gestione errori
       String messaggioErrore;
       switch (e.code) {
         case 'user-not-found':
@@ -94,11 +93,11 @@ class _LoginScreenState extends State<LoginScreen> {
       }
 
       setState(() {
-        _messaggio = '❌ $messaggioErrore';
+        _messaggio = ' $messaggioErrore';
       });
     } catch (e) {
       setState(() {
-        _messaggio = '❌ Errore: $e';
+        _messaggio = ' Errore: $e';
       });
     } finally {
       setState(() {
@@ -110,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _resetPassword() async {
     if (_emailController.text.isEmpty) {
       setState(() {
-        _messaggio = '❌ Inserisci email per reset password';
+        _messaggio = ' Inserisci email per reset password';
       });
       return;
     }
@@ -120,11 +119,11 @@ class _LoginScreenState extends State<LoginScreen> {
         email: _emailController.text.trim(),
       );
       setState(() {
-        _messaggio = '✅ Email di reset inviata! Controlla la posta';
+        _messaggio = 'Email di reset inviata! Controlla la posta';
       });
     } catch (e) {
       setState(() {
-        _messaggio = '❌ Errore invio email: $e';
+        _messaggio = ' Errore invio email: $e';
       });
     }
   }
@@ -142,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const SizedBox(height: 40),
 
-                // 📚 LOGO
+                // LOGO
                 const Icon(Icons.book, size: 80, color: Colors.pink),
                 const SizedBox(height: 16),
                 const Text(
@@ -160,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 32),
 
-                // 👤 NOME (solo registrazione)
+                //  NOME (solo registrazione)
                 if (!_isLogin)
                   TextFormField(
                     controller: _nomeController,
@@ -172,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 if (!_isLogin) const SizedBox(height: 16),
 
-                // 📧 EMAIL
+                // EMAIL
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
@@ -193,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // 🔐 PASSWORD
+                //  PASSWORD
                 TextFormField(
                   controller: _passwordController,
                   obscureText: !_passwordVisible,
@@ -226,7 +225,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 8),
 
-                // 🔗 RESET PASSWORD (solo login)
+                // RESET PASSWORD (solo login)
                 if (_isLogin)
                   Align(
                     alignment: Alignment.centerRight,
@@ -238,7 +237,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 24),
 
-                // 🎯 BOTTONE
+                //  BOTTONE
                 SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -256,7 +255,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 16),
 
-                // 📝 MESSAGGIO
+                //  MESSAGGIO
                 if (_messaggio != null)
                   Container(
                     padding: const EdgeInsets.all(12),
@@ -293,7 +292,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 24),
 
-                // 🔄 CAMBIO MODALITÀ
+                //  CAMBIO MODALITÀ
                 TextButton(
                   onPressed: _isLoading ? null : _toggleModalita,
                   child: Text(
