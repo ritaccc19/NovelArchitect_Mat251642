@@ -1,0 +1,48 @@
+{
+  "app_title": "NovelArchitect",
+  "Home": "Home",
+  "Personaggi": "Personaggi",
+  "Trama e Sinossi": "Trama e Sinossi",
+  "Capitoli": "Capitoli",
+  "Luoghi": "Luoghi",
+  "Impostazioni": "Impostazioni",
+
+  "Salva": "Salva",
+  "aggiungi": "Aggiungi",
+
+  "Dettaglio Capitolo": "Dettaglio Capitolo",
+  "Titolo Capitolo": "Titolo Capitolo",
+  "Descrizione": "Descrizione",
+  "Personaggi Coinvolti (separati da virgola)": "Personaggi Coinvolti (separati da virgola)",
+  "Luogo del capitolo": "Luogo del capitolo",
+  "Note Creative": "Note Creative",
+  "Obiettivi del Capitolo": "Obiettivi del Capitolo",
+
+  "Buongiorno": "Buongiorno",
+  "Buon Pomeriggio": "Buon Pomeriggio",
+  "Buonasera": "Buonasera",
+  "Inizia a scrivere!": "Inizia a scrivere!",
+
+  "nessun_capitolo": "Nessun capitolo ancora creato",
+  "nuovo_capitolo": "Nuovo Capitolo",
+  "crea_capitolo": "Crea Capitolo",
+  "annulla": "Annulla",
+
+  "Trama e sinossi salvate!": "Trama e sinossi salvate!",
+  "Trama Completa": "Trama Completa",
+  "Sinossi": "Sinossi",
+  "Scrivi qui la tua trama...": "Scrivi qui la tua trama...",
+  "Scrivi qui la sinossi...": "Scrivi qui la sinossi...",
+  "Scrivi qui la trama completa del tuo romanzo...": "Scrivi qui la trama completa del tuo romanzo...",
+  "Scrivi qui la sinossi (max 500 parole)...": "Scrivi qui la sinossi (max 500 parole)...",
+  "Parole": "Parole",
+
+  "NovelArchitect:  la tua app da scrittore!": "NovelArchitect: la tua app da scrittore!",
+  "Scegli copertina": "Scegli copertina",
+  "La copertina personalizzata è disponibile solo su mobile": "La copertina personalizzata è disponibile solo su mobile",
+  "Lingua": "Lingua",
+  "Tema": "Tema",
+  "Tema chiaro": "Tema chiaro",
+  "Tema scuro": "Tema scuro"
+
+}

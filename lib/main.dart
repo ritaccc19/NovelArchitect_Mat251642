@@ -72,20 +72,17 @@ class AppEntryPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 1️ Carico il contesto del libro (genere) UNA SOLA VOLTA
-    final bookProvider = context.read<BookContextProvider>();
-    final coverProvider = context.read<CoverProvider>();
-
     return FutureBuilder(
       future: Future.wait([
-        bookProvider.caricaGenere(),
-        coverProvider.loadCover(),
+        //funzionando con Firestore
+        context.read<BookContextProvider>().caricaGenere(),
+        context.read<CoverProvider>().loadCover(),
+        context.read<LinguaProvider>().caricaLingua(),
+        context.read<ThemeProvider>().caricaTema(),
       ]),
-
-      builder: (context, genereSnapshot) {
-
-        //  Attendo il caricamento del genere
-        if (genereSnapshot.connectionState == ConnectionState.waiting) {
+      builder: (context, snapshot) {
+        //  Attendo caricamento iniziale
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
             body: Center(
               child: Column(
@@ -100,40 +97,31 @@ class AppEntryPoint extends StatelessWidget {
           );
         }
 
-        // 2️ Dopo aver caricato il genere, controllo l'autenticazione
+        //  Dopo il caricamento iniziale → auth
         return StreamBuilder<User?>(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
-
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Scaffold(
-                body: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircularProgressIndicator(),
-                      SizedBox(height: 20),
-                      Text('Caricamento...'),
-                    ],
-                  ),
-                ),
+                body: Center(child: CircularProgressIndicator()),
               );
             }
 
-            final isLoggedIn = snapshot.hasData && snapshot.data != null;
+            final isLoggedIn = snapshot.hasData;
 
-            // NON loggato → Login
+            //  Non loggato
             if (!isLoggedIn) {
               return const LoginScreen();
             }
 
-            //  Loggato ma GENERE non ancora scelto → Setup iniziale
-            final hasGenere = context.watch<BookContextProvider>().haGenere;
+            //  Loggato ma genere non scelto
+            final hasGenere =
+                context.watch<BookContextProvider>().haGenere;
             if (!hasGenere) {
               return const GenereSetupScreen();
             }
 
-            //  Loggato + genere presente → App principale
+            // Tutto pronto, richiamo il layout
             return const Layout();
           },
         );
@@ -141,3 +129,4 @@ class AppEntryPoint extends StatelessWidget {
     );
   }
 }
+

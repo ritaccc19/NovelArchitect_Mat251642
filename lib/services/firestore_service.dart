@@ -15,6 +15,33 @@ class FirestoreService {
     return user.uid;
   }
 
+
+  // ---- PREFERENZE UTENTE ----
+
+  Future<void> salvaLingua(String lingua) async {
+    final uid = _uid;
+
+    await _db.collection('users').doc(uid).set({
+      'language': lingua,
+    }, SetOptions(merge: true));
+  }
+
+  Future<void> salvaTema(String tema) async {
+    final uid = _uid;
+
+    await _db.collection('users').doc(uid).set({
+      'theme': tema,
+    }, SetOptions(merge: true));
+  }
+
+  Future<Map<String, dynamic>?> caricaPreferenze() async {
+    final uid = _uid;
+
+    final doc = await _db.collection('users').doc(uid).get();
+    return doc.data();
+  }
+
+
   Stream<List<Capitolo>> streamCapitoli() {
     return _db
         .collection('users')

@@ -1,0 +1,48 @@
+{
+  "app_title": "NovelArchitect",
+  "Home": "Home",
+  "Personaggi": "Characters",
+  "Trama e Sinossi": "Plot and Synopsis",
+  "Capitoli": "Chapters",
+  "Luoghi": "Locations",
+  "Impostazioni": "Settings",
+
+  "Salva": "Save",
+  "aggiungi": "Add",
+  "Lingua": "Language",
+  "Tema": "Theme",
+  "Tema chiaro": "Light theme",
+  "Tema scuro": "Dark theme",
+
+
+  "Dettaglio Capitolo": "Chapter Detail",
+  "Titolo Capitolo": "Chapter Title",
+  "Descrizione": "Description",
+  "Personaggi Coinvolti (separati da virgola)": "Characters involved (separated by commas)",
+  "Luogo del capitolo": "Chapter location",
+  "Note Creative": "Creative Notes",
+  "Obiettivi del Capitolo": "Chapter objectives",
+
+  "Buongiorno": "Good morning",
+  "Buon Pomeriggio": "Good afternoon",
+  "Buonasera": "Good evening",
+  "Inizia a scrivere!": "Start writing!",
+
+  "nessun_capitolo": "No chapters created yet",
+  "nuovo_capitolo": "New Chapter",
+  "crea_capitolo": "Create Chapter",
+  "annulla": "Cancel",
+
+  "Trama e sinossi salvate!": "Plot and synopsis saved!",
+  "Trama Completa": "Full plot",
+  "Sinossi": "Synopsis",
+  "Scrivi qui la tua trama...": "Write your plot here...",
+  "Scrivi qui la sinossi...": "Write your synopsis here...",
+  "Scrivi qui la trama completa del tuo romanzo...": "Write your full plot here...",
+  "Scrivi qui la sinossi (max 500 parole)...": "Write your synopsis here (max 500 words)...",
+  "Parole": "Words",
+
+  "NovelArchitect:  la tua app da scrittore!": "NovelArchitect: your writing app!",
+  "Scegli copertina": "Choose cover",
+  "La copertina personalizzata è disponibile solo su mobile": "Custom cover is available only on mobile"
+}

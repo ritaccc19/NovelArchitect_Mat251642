@@ -1,0 +1,48 @@
+{
+  "app_title": "NovelArchitect",
+  "Home": "Accueil",
+  "Personaggi": "Personnages",
+  "Trama e Sinossi": "Intrigue et synopsis",
+  "Capitoli": "Chapitres",
+  "Luoghi": "Lieux",
+  "Impostazioni": "Paramètres",
+
+  "Salva": "Sauvegarder",
+  "aggiungi": "Ajouter",
+
+  "Dettaglio Capitolo": "Détail du chapitre",
+  "Titolo Capitolo": "Titre du chapitre",
+  "Descrizione": "Description",
+  "Personaggi Coinvolti (separati da virgola)": "Personnages impliqués (séparés par des virgules)",
+  "Luogo del capitolo": "Lieu du chapitre",
+  "Note Creative": "Notes créatives",
+  "Obiettivi del Capitolo": "Objectifs du chapitre",
+
+  "Buongiorno": "Bonjour",
+  "Buon Pomeriggio": "Bon après-midi",
+  "Buonasera": "Bonsoir",
+  "Inizia a scrivere!": "Commencer à écrire",
+
+  "nessun_capitolo": "Aucun chapitre créé pour le moment",
+  "nuovo_capitolo": "Nouveau chapitre",
+  "crea_capitolo": "Créer le chapitre",
+  "annulla": "Annuler",
+
+  "Trama e sinossi salvate!": "Intrigue et synopsis sauvegardés !",
+  "Trama Completa": "Intrigue complète",
+  "Sinossi": "Synopsis",
+  "Scrivi qui la tua trama...": "Écrivez ici votre intrigue...",
+  "Scrivi qui la sinossi...": "Écrivez ici votre synopsis...",
+  "Scrivi qui la trama completa del tuo romanzo...": "Écrivez ici l’intrigue complète de votre roman...",
+  "Scrivi qui la sinossi (max 500 parole)...": "Écrivez ici le synopsis (max. 500 mots)...",
+  "Parole": "Mots",
+  "Lingua": "Langue",
+  "Tema": "Thème",
+  "Tema chiaro": "Thème clair",
+  "Tema scuro": "Thème sombre",
+
+
+  "NovelArchitect:  la tua app da scrittore!": "NovelArchitect : votre application pour écrivains",
+  "Scegli copertina": "Choisir la couverture",
+  "La copertina personalizzata è disponibile solo su mobile": "La couverture personnalisée est disponible uniquement sur mobile"
+}
