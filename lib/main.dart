@@ -11,6 +11,7 @@ import 'firebase_options.dart';
 // Providers (solo quelli necessari)
 import 'package:novelarchitect/providers/lingua_providers.dart';
 import 'package:novelarchitect/providers/theme_provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // UI
 import 'package:novelarchitect/UI/widgets/tema_mio.dart';
@@ -25,6 +26,7 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+
     print(' Firebase inizializzato');
   } catch (e) {
     print(' Firebase error: $e');
@@ -76,7 +78,7 @@ class AppEntryPoint extends StatelessWidget {
 
     return FutureBuilder(
       future: Future.wait([
-        bookProvider.loadGenere(),
+        bookProvider.caricaGenere(),
         coverProvider.loadCover(),
       ]),
 
@@ -126,7 +128,7 @@ class AppEntryPoint extends StatelessWidget {
             }
 
             //  Loggato ma GENERE non ancora scelto → Setup iniziale
-            final hasGenere = context.watch<BookContextProvider>().hasGenere;
+            final hasGenere = context.watch<BookContextProvider>().haGenere;
             if (!hasGenere) {
               return const GenereSetupScreen();
             }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../providers/book_context_provider.dart';
 import 'home_screen.dart';
 
-//questa è una schermata iniziale dopo il login per impostare il proprio libro e salvare LOCALMENTE il libro 
 class GenereSetupScreen extends StatefulWidget {
   const GenereSetupScreen({super.key});
 
@@ -15,8 +15,19 @@ class _GenereSetupScreenState extends State<GenereSetupScreen> {
   String? _genereSelezionato;
 
   @override
+  void initState() {
+    super.initState();
+
+    // carica il genere da Firestore
+    context.read<BookContextProvider>().caricaGenere();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final bookProvider = context.read<BookContextProvider>();
+    final bookProvider = context.watch<BookContextProvider>();
+
+    // se il genere è già salvato, pre-selezionalo
+    _genereSelezionato ??= bookProvider.genere;
 
     return Scaffold(
       appBar: AppBar(

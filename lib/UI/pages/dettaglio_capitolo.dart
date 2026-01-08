@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:novelarchitect/UI/pages/sezione_capitoli.dart';
 import '../widgets/bottoni_personalizzati.dart';
 import '../widgets/input_personalizzato.dart';
 import '../widgets/sezione_titolo.dart';
 import '../../providers/lingua_providers.dart';
 import 'package:provider/provider.dart';
+import '../../model/capitolo.dart';
 
 class DettaglioCapitolo extends StatefulWidget {
 
@@ -47,15 +47,14 @@ class _DettaglioCapitoloState extends State<DettaglioCapitolo> {
   }
 
   void _salvaModifiche() {
-    //questa funzione viene chiamata quando si vuole salvare le modifiche fatte ad un capitolo
-    // PER PERSONAGGI: splitto la stringa in lista
+    final linguaProvider = Provider.of<LinguaProvider>(context, listen: false);
+
     List<String> personaggi = _personaggiCoinvoltiController.text
         .split(',')
         .map((p) => p.trim())
         .where((p) => p.isNotEmpty)
         .toList();
 
- //creo l'oggetto capitolo modificato
     final capitoloModificato = Capitolo(
       id: widget.capitolo.id,
       titolo: _titoloController.text,
@@ -66,13 +65,17 @@ class _DettaglioCapitoloState extends State<DettaglioCapitolo> {
       obiettivi: _obiettiviController.text,
     );
 
-    //lo do in inpput a onSalvaModifiche
     widget.onSalvaModifiche(capitoloModificato);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(('Ok'))),
+      SnackBar(
+        content: Text(linguaProvider.traduci('Salva')),
+      ),
     );
+
+    Navigator.pop(context); // torna alla lista capitoli
   }
+
 
   @override
   Widget build(BuildContext context) {

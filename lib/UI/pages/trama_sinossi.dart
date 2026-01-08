@@ -4,6 +4,8 @@ import '../widgets/input_personalizzato.dart';
 import '../widgets/contatore_animato.dart';
 import 'package:provider/provider.dart';
 import '../../providers/lingua_providers.dart';
+import '../../services/firestore_service.dart';
+
 
 class TramaSinossi extends StatefulWidget {
   const TramaSinossi({super.key});
@@ -15,7 +17,7 @@ class TramaSinossi extends StatefulWidget {
 
 
 class _TramaSinossiState extends State<TramaSinossi> {
-
+  final FirestoreService _firestoreService = FirestoreService();
   final TextEditingController _tramaController = TextEditingController();
   final TextEditingController _sinossiController = TextEditingController();
 
@@ -27,8 +29,17 @@ class _TramaSinossiState extends State<TramaSinossi> {
     super.initState();
     _tramaController.addListener(_aggiornaContatori);
     _sinossiController.addListener(_aggiornaContatori);
-  }
 
+    _caricaDati();//aggiunto per Firebase
+
+  }
+  Future<void> _caricaDati() async {
+    final dati = await _firestoreService.caricaTramaSinossi();
+    setState(() {
+      _tramaController.text = dati['trama'] ?? '';
+      _sinossiController.text = dati['sinossi'] ?? '';
+    });
+  }
   int _contaParole(String testo) {
     if (testo.isEmpty) return 0;
     List<String> parole = testo.split(RegExp(r'\s+'));
@@ -43,13 +54,24 @@ class _TramaSinossiState extends State<TramaSinossi> {
   }
 
 
-  void _salvaTrama() {
+  //invece di salvare la trama in locale.
+  void _salvaTrama() async {
     final linguaProvider = Provider.of<LinguaProvider>(context, listen: false);
-    //metodo che viene eseguito quando si preme sul bottone Salva
+
+    await _firestoreService.salvaTramaSinossi(
+      trama: _tramaController.text,
+      sinossi: _sinossiController.text,
+    );
+
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(linguaProvider.traduci('Trama e sinossi salvate!'))),
+      SnackBar(
+        content: Text(
+          linguaProvider.traduci('Trama e sinossi salvate!'),
+        ),
+      ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
